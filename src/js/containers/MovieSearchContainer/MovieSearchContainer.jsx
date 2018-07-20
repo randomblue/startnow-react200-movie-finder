@@ -22,17 +22,6 @@ class MovieSearchContainer extends React.Component {
     dispatch(findMovie(movieTitle));
   }
 
-  // toBeyonceOrNot() {
-  //   const { movieInfo, dispatch } = this.props;
-  //   if (movieInfo.Poster == "N/A") {
-  //     return ("https://i.pinimg.com/originals/af/ee/e5/afeee5509eb93f87bea459ccc8ddcae1.jpg")
-  //   }
-
-  //   else {
-  //     return (movieInfo.Poster)
-  //   }
-  // }
-
   render() {
     const { movieTitle, movieData } = this.props;
     console.log(movieData);
@@ -68,13 +57,31 @@ class MovieSearchContainer extends React.Component {
               <div className="card" key={movieInfo.imdbID}>
                 <div className="card-body row">
                   {/* image */}
-                  <div className="col col-4">
-                    <img
+                  <div key={movieInfo.imdbID} className="col col-4">
+                    {movieInfo.Poster === "N/A" ? (
+                      <img
+                        className=""
+                        src="https://i.pinimg.com/originals/af/ee/e5/afeee5509eb93f87bea459ccc8ddcae1.jpg"
+                        alt="placeholder"
+                        width="200"
+                        height="275"
+                      />
+                    ) : (
+                      <img
+                        className=""
+                        src={movieInfo.Poster}
+                        alt="placeholder"
+                        width="200"
+                        height="275"
+                      />
+                    )}
+                    
+                    {/* <img
                       src={movieInfo.Poster}
                       alt="beyonce"
                       width="200"
                       height="275"
-                    />
+                    /> */}
                   </div>
 
                   {/* info */}
